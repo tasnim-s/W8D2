@@ -9,6 +9,15 @@ class MyController < ControllerBase
       redirect_to("/cats")
     end
   end
+
+  def already_built_response
+    @already_built_response
+  end
+  def render_content(content, content_type)
+    res.content_type = content_type
+    res.body = content
+    already_built_response = true
+  end
 end
 app = Proc.new do |env|
   req = Rack::Request.new(env)
